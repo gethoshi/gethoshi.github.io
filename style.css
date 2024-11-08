@@ -1,0 +1,72 @@
+/* Set basic styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+  font-family: Arial, sans-serif;
+}
+
+/* Styling for the text */
+h1 {
+  color: #fff;
+  font-size: 3em;
+  z-index: 1;
+}
+
+/* Background animation layers */
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.background::before,
+.background::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.3;
+  animation: moveBackground 15s linear infinite;
+}
+
+/* Layer 1: diagonal stripes */
+.background::before {
+  background-image: linear-gradient(45deg, rgba(0, 255, 255, 0.3) 25%, transparent 25%, transparent 75%, rgba(0, 255, 255, 0.3) 75%);
+  background-size: 10px 10px;
+  animation-duration: 20s;
+}
+
+/* Layer 2: horizontal lines */
+.background::after {
+  background-image: linear-gradient(rgba(255, 0, 150, 0.2) 1px, transparent 1px);
+  background-size: 100% 5px;
+  animation-duration: 25s;
+}
+
+/* Animation for both layers */
+@keyframes moveBackground {
+  from {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  to {
+    transform: translate(10%, 10%) rotate(360deg);
+  }
+}
