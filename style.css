@@ -8,84 +8,67 @@
 body, html {
   width: 100%;
   height: 100%;
-  font-family: 'Arial', sans-serif;
   overflow: hidden;
+  font-family: Arial, sans-serif;
+  background: #000;
 }
 
-.futuristic-background {
-  position: relative;
+/* Background container */
+.animated-background {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at center, #0f0f3f, #000814 70%);
+  background: radial-gradient(circle, #00111a, #000);
   overflow: hidden;
 }
 
-/* Glowing orbs animation */
-.orb {
+/* Particle effect */
+.animated-background::before {
+  content: '';
   position: absolute;
-  width: 150px;
-  height: 150px;
-  background: radial-gradient(circle, rgba(0, 255, 255, 0.7), rgba(0, 255, 255, 0) 70%);
-  border-radius: 50%;
-  animation: float 8s ease-in-out infinite, move 15s linear infinite;
-  opacity: 0.8;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle at center, rgba(0, 240, 255, 0.5), transparent 70%);
+  filter: blur(200px);
+  animation: pulse 5s infinite alternate ease-in-out;
 }
 
-/* Positioning orbs randomly */
-.orb:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
-.orb:nth-child(2) { top: 40%; left: 70%; animation-delay: 2s; }
-.orb:nth-child(3) { top: 80%; left: 10%; animation-delay: 4s; }
-.orb:nth-child(4) { top: 60%; left: 50%; animation-delay: 6s; }
-
-/* Orb floating animation */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-30px); }
-}
-
-@keyframes move {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(100vw); }
-}
-
-/* Animated gradient waves */
-.wave {
+/* Moving gradient waves */
+.animated-background::after {
+  content: '';
   position: absolute;
-  width: 100%;
-  height: 10%;
-  background: linear-gradient(90deg, rgba(255, 20, 147, 0.5), rgba(75, 0, 130, 0.5));
-  animation: wave 5s linear infinite;
-  opacity: 0.7;
-  filter: blur(5px);
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 300%;
+  background: linear-gradient(120deg, rgba(0, 230, 255, 0.1), rgba(255, 0, 150, 0.1), rgba(0, 0, 0, 0.1));
+  animation: wave 20s linear infinite;
+  mix-blend-mode: overlay;
+  filter: blur(80px);
 }
 
-/* Position waves at different vertical offsets */
-.wave:nth-child(5) { top: 20%; animation-delay: 0s; }
-.wave:nth-child(6) { top: 50%; animation-delay: 2s; }
-.wave:nth-child(7) { top: 80%; animation-delay: 4s; }
+/* Particle animation */
+@keyframes pulse {
+  from {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.7;
+  }
+  to {
+    transform: translate(-45%, -45%) scale(1.3);
+    opacity: 0.4;
+  }
+}
 
-/* Wave animation */
+/* Gradient waves animation */
 @keyframes wave {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-/* Heading styling */
-h1 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 3rem;
-  color: #ffffff;
-  text-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(255, 0, 150, 0.8);
-  z-index: 10;
-  text-align: center;
-  animation: glow 1.5s ease-in-out infinite;
-}
-
-/* Pulsating glow for the heading */
-@keyframes glow {
-  0%, 100% { text-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(255, 0, 150, 0.8); }
-  50% { text-shadow: 0 0 30px rgba(0, 255, 255, 1), 0 0 50px rgba(255, 0, 150, 1); }
+  from {
+    transform: translate(0%, 0%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
