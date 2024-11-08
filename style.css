@@ -1,4 +1,4 @@
-/* Set basic styles */
+/* Reset styles */
 * {
   margin: 0;
   padding: 0;
@@ -8,65 +8,84 @@
 body, html {
   width: 100%;
   height: 100%;
+  font-family: 'Arial', sans-serif;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #000;
-  font-family: Arial, sans-serif;
 }
 
-/* Styling for the text */
-h1 {
-  color: #fff;
-  font-size: 3em;
-  z-index: 1;
-}
-
-/* Background animation layers */
-.background {
-  position: absolute;
-  top: 0;
-  left: 0;
+.futuristic-background {
+  position: relative;
   width: 100%;
   height: 100%;
+  background: radial-gradient(circle at center, #0f0f3f, #000814 70%);
   overflow: hidden;
 }
 
-.background::before,
-.background::after {
-  content: '';
+/* Glowing orbs animation */
+.orb {
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  opacity: 0.3;
-  animation: moveBackground 15s linear infinite;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(0, 255, 255, 0.7), rgba(0, 255, 255, 0) 70%);
+  border-radius: 50%;
+  animation: float 8s ease-in-out infinite, move 15s linear infinite;
+  opacity: 0.8;
 }
 
-/* Layer 1: diagonal stripes */
-.background::before {
-  background-image: linear-gradient(45deg, rgba(0, 255, 255, 0.3) 25%, transparent 25%, transparent 75%, rgba(0, 255, 255, 0.3) 75%);
-  background-size: 10px 10px;
-  animation-duration: 20s;
+/* Positioning orbs randomly */
+.orb:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+.orb:nth-child(2) { top: 40%; left: 70%; animation-delay: 2s; }
+.orb:nth-child(3) { top: 80%; left: 10%; animation-delay: 4s; }
+.orb:nth-child(4) { top: 60%; left: 50%; animation-delay: 6s; }
+
+/* Orb floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-30px); }
 }
 
-/* Layer 2: horizontal lines */
-.background::after {
-  background-image: linear-gradient(rgba(255, 0, 150, 0.2) 1px, transparent 1px);
-  background-size: 100% 5px;
-  animation-duration: 25s;
+@keyframes move {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100vw); }
 }
 
-/* Animation for both layers */
-@keyframes moveBackground {
-  from {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  to {
-    transform: translate(10%, 10%) rotate(360deg);
-  }
+/* Animated gradient waves */
+.wave {
+  position: absolute;
+  width: 100%;
+  height: 10%;
+  background: linear-gradient(90deg, rgba(255, 20, 147, 0.5), rgba(75, 0, 130, 0.5));
+  animation: wave 5s linear infinite;
+  opacity: 0.7;
+  filter: blur(5px);
+}
+
+/* Position waves at different vertical offsets */
+.wave:nth-child(5) { top: 20%; animation-delay: 0s; }
+.wave:nth-child(6) { top: 50%; animation-delay: 2s; }
+.wave:nth-child(7) { top: 80%; animation-delay: 4s; }
+
+/* Wave animation */
+@keyframes wave {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Heading styling */
+h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(255, 0, 150, 0.8);
+  z-index: 10;
+  text-align: center;
+  animation: glow 1.5s ease-in-out infinite;
+}
+
+/* Pulsating glow for the heading */
+@keyframes glow {
+  0%, 100% { text-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(255, 0, 150, 0.8); }
+  50% { text-shadow: 0 0 30px rgba(0, 255, 255, 1), 0 0 50px rgba(255, 0, 150, 1); }
 }
