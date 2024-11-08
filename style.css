@@ -9,66 +9,22 @@ body, html {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  font-family: Arial, sans-serif;
   background: #000;
+  font-family: Arial, sans-serif;
 }
 
-/* Background container */
+/* Animated background container */
 .animated-background {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, #00111a, #000);
-  overflow: hidden;
+  z-index: -1;
 }
 
-/* Particle effect */
-.animated-background::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 300%;
-  height: 300%;
-  background: radial-gradient(circle at center, rgba(0, 240, 255, 0.5), transparent 70%);
-  filter: blur(200px);
-  animation: pulse 5s infinite alternate ease-in-out;
-}
-
-/* Moving gradient waves */
-.animated-background::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 300%;
-  height: 300%;
-  background: linear-gradient(120deg, rgba(0, 230, 255, 0.1), rgba(255, 0, 150, 0.1), rgba(0, 0, 0, 0.1));
-  animation: wave 20s linear infinite;
-  mix-blend-mode: overlay;
-  filter: blur(80px);
-}
-
-/* Particle animation */
-@keyframes pulse {
-  from {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 0.7;
-  }
-  to {
-    transform: translate(-45%, -45%) scale(1.3);
-    opacity: 0.4;
-  }
-}
-
-/* Gradient waves animation */
-@keyframes wave {
-  from {
-    transform: translate(0%, 0%) rotate(0deg);
-  }
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
