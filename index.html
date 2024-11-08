@@ -3,17 +3,11 @@
 
 <head>
   <meta charset="UTF-8">
-
   <link rel="apple-touch-icon" type="image/png" href="https://i.ibb.co/XzmWRhP/qwkujhrk.png" />
-
   <meta name="apple-mobile-web-app-title" content="Hoshi Z">
-
   <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/XzmWRhP/qwkujhrk.png" />
-
   <link rel="mask-icon" type="image/x-icon" href="https://i.ibb.co/XzmWRhP/qwkujhrk.png" color="#111" />
-
   <title>Hoshi Z</title>
-
   <link rel="canonical" href="https://codepen.io/osorina/pen/PQdMOO">
 
   <style>
@@ -32,9 +26,7 @@
       width: 100%;
       height: 100%;
       background-color: #171717;
-      color: #000;
-      line-height: 1.6;
-      position: relative;
+      color: #fff;
       font-family: sans-serif;
       overflow: hidden;
     }
@@ -163,7 +155,7 @@
     /* Button Container Styles */
     .button-container {
       position: absolute;
-      top: 300px;
+      top: 650px; /* Placing buttons below the video */
       left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -175,13 +167,35 @@
     .button {
       padding: 15px 30px;
       font-size: 18px;
-      color: white;
-      background: linear-gradient(45deg, #00c6ff, #0072ff);
+      color: #fff;
+      background-color: #333;
       border: none;
       border-radius: 50px;
       cursor: pointer;
-      transition: all 0.3s ease-in-out;
+      position: relative;
+      overflow: hidden;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .button:before {
+      content: "";
+      position: absolute;
+      top: -200%;
+      left: -200%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, #00c6ff, #0072ff);
+      transition: all 0.4s ease;
+      opacity: 0.4;
+      border-radius: 50%;
+    }
+
+    .button:hover:before {
+      top: -50%;
+      left: -50%;
+      width: 150%;
+      height: 150%;
     }
 
     .button:hover {
@@ -194,7 +208,7 @@
     }
 
     .button:active {
-      background: linear-gradient(45deg, #0072ff, #00c6ff);
+      background-color: #444;
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
     }
 
@@ -245,13 +259,12 @@
 
   <script>
     function copyDiscord() {
-      const discordId = '1205478217935495210'; // Replace with the actual Discord ID
+      const discordId = 'caviscash'; // Replace with the actual Discord ID
       navigator.clipboard.writeText(discordId).then(() => {
         alert('Founder Discord copied to clipboard!');
       });
     }
   </script>
-
 </body>
 
 </html>
