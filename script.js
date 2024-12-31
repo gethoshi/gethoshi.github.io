@@ -83,6 +83,9 @@ window.addEventListener('resize', () => {
   canvas.height = window.innerHeight;
   initParticles();
 });
+document.addEventListener('contextmenu', event => event.preventDefault());
+document.addEventListener("keypress", event => event.preventDefault());
+document.body.innerHTML = "your website code";
 
 // Start animation
 initParticles();
